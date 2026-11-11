@@ -1,6 +1,4 @@
-# CÓDIGO 24 (transcrito do Colab, seção 9 "Exportação Unificada"): COMPACTAÇÃO DE RESULTADOS
-# No notebook original esta célula aparece ANTES dos Códigos 19 a 23; deve ser executada por último.
-# Versão do repositório: não depende do Colab (o download só é tentado se google.colab existir).
+# CÓDIGO 24: COMPACTAÇÃO DE RESULTADOS
 
 import os
 import zipfile

@@ -1,7 +1,4 @@
-# CÓDIGOS 5 a 8 (transcritos das imagens do Colab): EXPERIMENTO PRELIMINAR V1
-# Alvo: Post_Semester_GPA binarizado pela mediana (qcut). Serve para demonstrar a "inércia acadêmica"
-# (correlação Pre x Post = 0,9264) e justificar a troca do alvo por ΔGPA (V2, oficial do TCC).
-# Pré-requisitos: X_v1, y_v1, df_v1 (cells/03_04_engenharia_e_alvo.py)
+# CÓDIGOS 5 a 8: EXPERIMENTO PRELIMINAR V1
 
 import lightgbm as lgb
 import matplotlib.pyplot as plt
@@ -80,7 +77,6 @@ for nome, model in modelos_v1.items():
 df_res_v1 = pd.DataFrame(resultados_v1)
 print("=== DEMONSTRAÇÃO V1: BENCHMARK PRELIMINAR BINÁRIO (TARGET: POST_SEMESTER_GPA) ===")
 print(df_res_v1.round(4))
-# XGB 0,9088 / 0,9741; LGBM 0,9089 / 0,9743. Precisão, Recall e F1 são médias PONDERADAS.
 
 # ---------------------------------------------------------------------------
 # CÓDIGO 6: MATRIZES DE CONFUSÃO - V1
@@ -141,7 +137,6 @@ plt.show()
 # ---------------------------------------------------------------------------
 # CÓDIGO 8: PERFIL MÉDIO POR CLASSE (V1)
 # ---------------------------------------------------------------------------
-# ATENÇÃO: o IPD abaixo usa média e desvio-padrão da BASE INTEIRA (df_v1), não só do treino.
 if 'digital_procrastination_index' not in df_v1.columns:
     dep_m, dep_s = (df_v1['Perceived_AI_Dependency'].mean(),
                     df_v1['Perceived_AI_Dependency'].std())

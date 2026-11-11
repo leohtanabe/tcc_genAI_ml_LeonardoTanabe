@@ -1,6 +1,4 @@
-# CÓDIGO 23: FIGURA 14 (RADAR DOS CENTROIDES PADRONIZADOS POR PERSONA), CALCULADA DOS DADOS
-# Substitui o radar original, que usava valores digitados à mão (legacy/radar_personas_valores_digitados_a_mao.py).
-# Pré-requisito: df com a coluna `persona` (Código 15).
+# CÓDIGO 23: FIGURA 14 (RADAR DOS CENTROIDES PADRONIZADOS POR PERSONA)
 
 import numpy as np
 import pandas as pd
@@ -71,7 +69,7 @@ plt.tight_layout()
 plt.savefig('figura_14_perfil_personas_radar.png', dpi=300, bbox_inches='tight')
 plt.show()
 
-# Download no Colab (opcional)
+# Download no Colab
 try:
     from google.colab import files
     files.download('figura_14_perfil_personas_radar.png')

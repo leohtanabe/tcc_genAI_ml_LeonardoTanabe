@@ -1,12 +1,4 @@
-# CÓDIGO 9 (transcrito do Colab): MODELO OFICIAL V2, LightGBM, alvo ΔGPA binário
-# Pré-requisitos: df_encoded e df (cells/03_04_engenharia_e_alvo.py)
-# Pontos verificados:
-#  - Pre_Semester_GPA E Post_Semester_GPA ficam FORA dos atributos (lista `ignore`).
-#  - O IPD é calculado DEPOIS do split, com média e desvio-padrão do TREINO (sem vazamento).
-#  - Hiperparâmetros fixados manualmente (iguais ao LightGBM do experimento V1), sem busca.
-#  - A winsorização (1%) continua sendo aplicada na base inteira, antes do split (Código 3B).
-#  - ATENÇÃO: com rótulos em texto, o sklearn ordena as classes alfabeticamente
-#    (classes_ = ['Alto Ganho', 'Baixo Ganho']), logo predict_proba[:, 1] = Baixo Ganho.
+# CÓDIGO 9: MODELO OFICIAL V2, LightGBM, alvo ΔGPA binário
 
 import lightgbm as lgb
 import matplotlib.pyplot as plt

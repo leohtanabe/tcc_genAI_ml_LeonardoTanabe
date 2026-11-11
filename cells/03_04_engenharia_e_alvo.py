@@ -1,5 +1,4 @@
-# CÓDIGOS 3A, 3B e 4 (transcritos das imagens do Colab, sem alterações de lógica)
-# Pré-requisito: df_raw carregado (cells/01_02_ambiente_e_dados.py)
+# CÓDIGOS 3A, 3B e 4
 
 import pandas as pd
 from scipy.stats.mstats import winsorize
@@ -89,11 +88,9 @@ df = df_raw.copy()
 # 1. Variável-Alvo Oficial do TCC: Ganho Líquido de Desempenho (ΔGPA Binário)
 df['delta_gpa'] = df['Post_Semester_GPA'] - df['Pre_Semester_GPA']
 
-# ATENÇÃO: o alvo é definido sobre o ΔGPA BRUTO (antes da winsorização abaixo)
 df['target'] = pd.qcut(df['delta_gpa'], q=2, labels=['Baixo Ganho', 'Alto Ganho'])
 
 # 2. Tratamento de Outliers via Winsorização (1% nas extremidades)
-# ATENÇÃO: aplicada na base inteira, antes de qualquer divisão treino/teste
 cont_cols = [
     'Weekly_GenAI_Hours',
     'Traditional_Study_Hours',
@@ -125,7 +122,6 @@ df_encoded = pd.get_dummies(
 )
 
 # 5. Definição de Atributos e Alvo Oficial
-# ATENÇÃO: Pre_Semester_GPA NÃO está em ignore_cols neste ponto (verificar células seguintes)
 ignore_cols = ['Student_ID', 'Post_Semester_GPA', 'delta_gpa', 'target']
 X_features = [c for c in df_encoded.columns if c not in ignore_cols]
 

@@ -1,7 +1,4 @@
-# CÓDIGOS 20, 21 e 22 (transcritos do Colab, células sem título): FIGURAS 4.1, 4.2 e 4.3 do notebook
-# Pré-requisito: df (cells/03_04 e 11_13). Os Códigos 21 e 22 refazem os gráficos do Código 13
-# (boxplots de EIA e REH; matriz de correlação), agora salvos como figuras separadas.
-# Os `files.download` do Colab foram removidos na versão do repositório.
+# CÓDIGOS 20, 21 e 22: FIGURAS 4.1, 4.2 e 4.3 do notebook
 
 import matplotlib.pyplot as plt
 import pandas as pd

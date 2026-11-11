@@ -1,11 +1,4 @@
 # CÓDIGOS 11, 12 e 13: DIAGNÓSTICOS VISUAIS DO V2
-# Pré-requisitos: df (3B) e features (Código 9). Usa a base df (winsorizada, sem divisão).
-# Observações:
-#  - O Código 12 usa um GradientBoostingClassifier do scikit-learn, treinado na base inteira,
-#    só para um gráfico de importância (impureza). Não é o LightGBM campeão nem SHAP.
-#  - Dos `features` do Código 9, só as 8 colunas originais existem em df; as dummies e o IPD
-#    são descartadas pelo filtro.
-#  - Os índices compostos do Código 13 são apenas diagnósticos (não entram no modelo).
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -58,7 +51,7 @@ if 'target' not in df.columns:
 X = df[features_validas]
 y = df['target']
 gbc = GradientBoostingClassifier(random_state=42)
-gbc.fit(X, y)  # base inteira, sem split: uso apenas descritivo
+gbc.fit(X, y)
 
 fig, axes = plt.subplots(1, 3, figsize=(18, 5))
 
@@ -93,7 +86,6 @@ plt.tight_layout()
 plt.savefig('analise_avancada_delta_gpa.png', dpi=300, bbox_inches='tight')
 plt.show()
 
-# Original (Colab): files.download('analise_avancada_delta_gpa.png'); removido na versão do repositório.
 
 # ---------------------------------------------------------------------------
 # CÓDIGO 13: ENGENHARIA DE VARIÁVEIS COMPOSTAS E DIAGNÓSTICO DE INTERAÇÕES

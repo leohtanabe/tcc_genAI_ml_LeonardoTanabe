@@ -1,6 +1,4 @@
 # CÓDIGOS 14, 15 e 16: VALIDAÇÃO DE k, PERSONAS (ROTULAÇÃO POR CENTROIDES) E TESTE χ²
-# Estes códigos substituem o Código 10 (versão final das personas).
-# Pré-requisito: df (3B e 13); o Código 15 usa `X` definido no Código 12.
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -106,7 +104,7 @@ tabela_exibicao = tabela_bruta.rename(columns={'Total Amostral': 'Total por Pers
 tabela_exibicao.index.name = 'Persona Discente'
 
 print("=== TABELA DE ASSOCIAÇÃO INFERENCIAL (PERSONAS x ΔGPA BINÁRIO) ===")
-print(tabela_exibicao)  # no Colab: display(...)
+print(tabela_exibicao)
 
 matriz_sem_totais = pd.crosstab(df[col_persona], df['desempenho_categoria'])
 chi2, p_val, dof, _ = chi2_contingency(matriz_sem_totais)
@@ -117,7 +115,7 @@ cramer_v = np.sqrt(chi2 / (n_obs * min_dim)) if min_dim > 0 else 0.0
 print("\n--- DIAGNÓSTICO ESTATÍSTICO COMPLETO ---")
 print(f"Estatística Qui-Quadrado (χ²): {chi2:.3f}")
 print(f"Graus de Liberdade (gl): {dof}")
-print(f"p-valor: {p_val:.4e} (p < 0.001)")  # o "(p < 0.001)" é texto fixo no original
+print(f"p-valor: {p_val:.4e} (p < 0.001)")
 print(f"Tamanho do Efeito (V de Cramér): {cramer_v:.4f}")
 if p_val < 0.05:
     print("Conclusão: associação ESTATISTICAMENTE SIGNIFICATIVA entre Persona e Ganho Binário (p < 0.05).")

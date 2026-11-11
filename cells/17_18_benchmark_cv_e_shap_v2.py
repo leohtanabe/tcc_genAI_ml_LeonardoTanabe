@@ -1,11 +1,4 @@
-# CÓDIGOS 17 e 18 (transcritos do Colab): BENCHMARK V2 COM VALIDAÇÃO CRUZADA E SHAP
-# Pré-requisitos: X_tr, X_te, y_tr, y_te, features (cells/09_modelo_v2_lightgbm.py)
-# Pontos verificados:
-#  - Aqui os rótulos viram 0/1 (Baixo=0, Alto=1), então predict_proba[:, 1] = Alto Ganho
-#    e o SHAP da classe 1 = Alto Ganho (diferente do `lgbm` do Código 9, que usa texto).
-#  - Precisão, Recall e F1 são médias PONDERADAS (por isso Recall = Acurácia).
-#  - A validação cruzada (5-fold estratificada, shuffle, seed 42) usa apenas o TREINO (X_tr).
-#  - Hiperparâmetros fixos, sem busca.
+# CÓDIGOS 17 e 18: BENCHMARK V2 COM VALIDAÇÃO CRUZADA E SHAP
 
 import lightgbm as lgb
 import matplotlib.pyplot as plt
@@ -70,7 +63,7 @@ for nome, model in modelos_v2.items():
 
 df_res_v2 = pd.DataFrame(resultados_v2)
 print("=== TABELA 4.4: BENCHMARK COMPARATIVO DE MODELOS (HOLDOUT 80/20 BINÁRIO) ===")
-print(df_res_v2.round(4))  # no Colab: display(...)
+print(df_res_v2.round(4))
 df_res_v2.to_csv("benchmark_modelos_v2_delta_gpa.csv", index=False)
 
 skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
@@ -87,12 +80,12 @@ for nome, model in modelos_v2.items():
     })
 
 print("\n=== VALIDAÇÃO CRUZADA ESTRATIFICADA (5-FOLD CV BINÁRIO) ===")
-print(pd.DataFrame(results_cv))  # no Colab: display(...)
+print(pd.DataFrame(results_cv))
 
 # ---------------------------------------------------------------------------
 # CÓDIGO 18: EXPLICABILIDADE SHAP (SUMMARY E DEPENDENCE PLOTS BINÁRIO)
 # ---------------------------------------------------------------------------
-# Amostra de 500 observações do teste (random_state=42) só para os GRÁFICOS.
+# Amostra de 500 observações do teste, usada nos gráficos
 X_te_shap = X_te.sample(n=min(500, len(X_te)), random_state=42)
 
 modelo_v2_lgbm = modelos_v2_treinados['LightGBM']
