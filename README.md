@@ -1,4 +1,4 @@
-# tcc-genai-ml
+# tcc_genAI_ml_LeonardoTanabe
 
 Código do TCC **"Aplicação de Machine Learning para avaliação do impacto da IA Generativa e das práticas de estudo no desempenho acadêmico: uma abordagem sob a perspectiva da eficiência operacional"**.
 
